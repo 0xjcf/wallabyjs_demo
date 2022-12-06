@@ -1,10 +1,16 @@
-module.exports = () => {
+module.exports = function () {
   return {
-    files: ["style/styles.css", "src/*.js"],
-    tests: ["test/*.spec.js", "test/*.test.js"],
-    env: {
-      kind: "chrome",
+    files: ["src/**/*.js"],
+
+    tests: ["test/**/*.test.js"],
+
+    setup: function () {
+      global.expect = require("chai").expect;
     },
-    debug: true,
+
+    env: {
+      type: "node",
+      runner: "node",
+    },
   };
 };
